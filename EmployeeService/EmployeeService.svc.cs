@@ -10,19 +10,15 @@ namespace EmployeeService
     public class Service1 : IEmployeeService
     {
         private readonly IEmployeeStore _store = new EmployeeStore();
-        
-        /// <summary>
-        /// Get employee and all his first level subordinates.
-        /// </summary>
+
+        /// <inheritdoc />
         public async Task<Employee> GetEmployeeById(int id)
         {
             var useCase = new GetEmployeeByIdUseCase(this._store);
             return await useCase.Execute(id);
         }
 
-        /// <summary>
-        /// Enable/Disable employee.
-        /// </summary>
+        /// <inheritdoc />
         public async Task EnableEmployee(int id, int enable)
         {
             var useCase = new UpdateEmployeeEnableStatusUseCase(this._store);
