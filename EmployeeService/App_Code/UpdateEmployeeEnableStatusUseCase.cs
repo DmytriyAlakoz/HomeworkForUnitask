@@ -3,6 +3,9 @@ using EmployeeService.Interfaces;
 
 namespace EmployeeService
 {
+    /// <summary>
+    /// Provide functionality to change employee enable status.
+    /// </summary>
     public class UpdateEmployeeEnableStatusUseCase
     {
         private readonly IEmployeeStore _store;

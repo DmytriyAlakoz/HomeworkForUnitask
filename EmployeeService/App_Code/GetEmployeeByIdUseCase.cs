@@ -4,6 +4,9 @@ using EmployeeService.Models;
 
 namespace EmployeeService
 {
+    /// <summary>
+    /// Provide functionality to get employee.
+    /// </summary>
     public class GetEmployeeByIdUseCase
     {
         private readonly IEmployeeStore _store;
