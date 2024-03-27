@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using Newtonsoft.Json;
+﻿using System.Threading.Tasks;
+using EmployeeService.Models;
 
 namespace EmployeeService
 {
@@ -11,21 +7,18 @@ namespace EmployeeService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IEmployeeService
     {
-        public bool GetEmployeeById(int id)
+        public async Task<Employee> GetEmployeeById(int id)
         {
-
-            return false;
+            var useCase = new GetEmployeeByIdUseCase();
+            return await useCase.Execute(id);
         }
 
       
 
-        public void EnableEmployee(int id, int enable)
+        public async Task EnableEmployee(int id, int enable)
         {
-            
+            var useCase = new UpdateEmployeeEnableStatusUseCase();
+            await useCase.Execute(id, enable);
         }
-
-     
     }
-
-      
 }
