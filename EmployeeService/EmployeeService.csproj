@@ -115,6 +115,7 @@
       <DependentUpon>EmployeeService.svc</DependentUpon>
     </Compile>
     <Compile Include="IEmployeeService.cs" />
+    <Compile Include="Interfaces\IEmployeeStore.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmptyEmployee.cs" />
     <Compile Include="Models\INullable.cs" />

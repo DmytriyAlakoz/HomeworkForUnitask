@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using EmployeeService.App_Data;
+using EmployeeService.Interfaces;
 using EmployeeService.Models;
 
 namespace EmployeeService
@@ -7,17 +9,23 @@ namespace EmployeeService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IEmployeeService
     {
+        private readonly IEmployeeStore _store = new EmployeeStore();
+        
+        /// <summary>
+        /// Get employee and all his first level subordinates.
+        /// </summary>
         public async Task<Employee> GetEmployeeById(int id)
         {
-            var useCase = new GetEmployeeByIdUseCase();
+            var useCase = new GetEmployeeByIdUseCase(this._store);
             return await useCase.Execute(id);
         }
 
-      
-
+        /// <summary>
+        /// Enable/Disable employee.
+        /// </summary>
         public async Task EnableEmployee(int id, int enable)
         {
-            var useCase = new UpdateEmployeeEnableStatusUseCase();
+            var useCase = new UpdateEmployeeEnableStatusUseCase(this._store);
             await useCase.Execute(id, enable);
         }
     }

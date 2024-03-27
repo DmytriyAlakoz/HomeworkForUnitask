@@ -1,20 +1,26 @@
 ﻿using System.Threading.Tasks;
-using EmployeeService.App_Data;
+using EmployeeService.Interfaces;
 
 namespace EmployeeService
 {
     public class UpdateEmployeeEnableStatusUseCase
     {
+        private readonly IEmployeeStore _store;
+
+        public UpdateEmployeeEnableStatusUseCase(IEmployeeStore store)
+        {
+            this._store = store;
+        }
+
         public async Task Execute(int id, int enableStatus)
         {
-            var employeeStore = new EmployeeStore();
             if (enableStatus > 0)
             {
-                await employeeStore.EnableEmployee(id);
+                await this._store.EnableEmployee(id);
             }
             else
             {
-                await employeeStore.DisableEmployee(id);
+                await this._store.DisableEmployee(id);
             }
         }
     }

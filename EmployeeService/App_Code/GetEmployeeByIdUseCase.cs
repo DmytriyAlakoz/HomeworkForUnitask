@@ -1,15 +1,21 @@
 ﻿using System.Threading.Tasks;
-using EmployeeService.App_Data;
+using EmployeeService.Interfaces;
 using EmployeeService.Models;
 
 namespace EmployeeService
 {
     public class GetEmployeeByIdUseCase
     {
+        private readonly IEmployeeStore _store;
+
+        public GetEmployeeByIdUseCase(IEmployeeStore store)
+        {
+            this._store = store;
+        }
+        
         public async Task<Employee> Execute(int id)
         {
-            var employeeStore = new EmployeeStore();
-            return await employeeStore.GetEmployeeById(id);
+            return await this._store.GetEmployeeById(id);
         }
     }
 }
