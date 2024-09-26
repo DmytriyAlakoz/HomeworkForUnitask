@@ -108,15 +108,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\GetEmployeeByIdUseCase.cs" />
+    <Compile Include="App_Code\UpdateEmployeeEnableStatusUseCase.cs" />
+    <Compile Include="App_Data\EmployeeStore.cs" />
     <Compile Include="EmployeeService.svc.cs">
       <DependentUpon>EmployeeService.svc</DependentUpon>
     </Compile>
     <Compile Include="IEmployeeService.cs" />
+    <Compile Include="Interfaces\IEmployeeStore.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmptyEmployee.cs" />
+    <Compile Include="Models\INullable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Code\" />
-    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
